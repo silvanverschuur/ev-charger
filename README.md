@@ -38,33 +38,15 @@ Open `ev-charger.ino` with Arduino IDE and compile/upload to ESP32 module.
 
 </pre>
 
-Do not use ADC2 pins to measure when using WiFi.
-WiFi causes interrupts on those analog_in pins.
-Use GPIO 32, 33, 34, 35, 36, 39 only for analog measurements.
-
 Charging States:
-|State|Pilot Voltage|EV Resistance|Description| Analog theoretic: (if pwm is on 1khz)|
+|State|Pilot Voltage|EV Resistance|Description|Analog theoretic (PWM 1khz)|
 |--|--|--|--|--|
-|  State A|       12V |           N/A|         Not Connected|           3.177 V   = 3943 of 4096 on ADC|
-|  State B|        9V |          2.7K|         Connected|               2.811 V   = 3489 of 4096 on ADC|
-|  State C|        6V |        882 Ohm|       Charging|                2.445 V   = 3034 of 4096 on ADC|
-| State D|        3V|          246 Ohm|       Ventilation Required|    2.079 V   = 2580 of 4096 on ADC|
- | State E|        0V|            N/A|         No Power|                1.713 V   = 2126 of 4096 on ADC|
-|  State F |     -12V |           N/A |        EVSE Error  |         249.198 mV   =  309 of 4096 on ADC|
-
-To test pilot voltage: take resistor from EV resistance table and put between pilot-pin and ground the pilot voltage will drop to 9V with 2.7K resistor etc, then you can measure the ADC values.
-
-Best to test with 100% pwm = DC 12V from Op-Amp (no square wave), then simple `analogRead()` on PilotPin input will give you the desired ADC value.
-  Second choice is driving the different voltages from a powersupply through the PP pin and ground
-  (bias voltage must be persent on circuit or the ESP pins can be damaged)
-  
-  measured Analog:
-  State A: 3.19V and ADC: 3950
-  State B: 2.75V and ADC: 3408
-  State C: 2.30V and ADC: 2847
-  State D: 1.92V and ADC: 2390 
-  State E: 1.57V and ADC: 1941
-  State F:
+|State A|       12V |           N/A|Not Connected|           3.177 V   = 3943 of 4096 on ADC|
+|State B|        9V |          2.7K|Connected|               2.811 V   = 3489 of 4096 on ADC|
+|State C|        6V |        882 Ohm|Charging|                2.445 V   = 3034 of 4096 on ADC|
+|State D|        3V|          246 Ohm|Ventilation Required|    2.079 V   = 2580 of 4096 on ADC|
+|State E|        0V|            N/A| No Power|                1.713 V   = 2126 of 4096 on ADC|
+|State F|     -12V |           N/A |EVSE Error|         249.198 mV   =  309 of 4096 on ADC|
   
 Calculation for PWM signal to charge @ x AMPS: (valid for up to 51A)
 AMPS = Duty cycle X 0.6 (duty cycle is in %)
