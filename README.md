@@ -1,7 +1,7 @@
 # EV-charger based on ESP32
 
-This software is based on the following code and is extended with MQTT support: 
-https://forum.arduino.cc/t/evse-charger-miev-leaf-tesla-6-16a-esp32/878422
+This software is based on this [code](https://forum.arduino.cc/t/evse-charger-miev-leaf-tesla-6-16a-esp32/878422) and is extended with MQTT support: 
+
 
 
 ### Required libraries
