@@ -76,11 +76,6 @@ example: 6A / 0.6 = 10% PWM
        20% PWM * 0.6 = 12A
 51-80A, AMPS = (Duty Cycle - 64)2.5
 </pre>
-         
-(similar to https://ev-olution.yolasite.com/DIY-Arduino-EVSE.php?fbclid=IwAR23UIyWYvearjFswAKCXX8PWCxq1a4q0NeUoIQT9HDftjr3ByCuptJ1D0w)
-(but adapted to 3.3V instead of 5V) => R4=47K, R3=68K, and 5V voltage source is changed to 3.3V
-EV-Ground and ESP32 ground (and psu) must be connected together
-https://www.ebay.com/itm/323540774103?hash=item4b54886cd7:g:vd4AAOSwIr9bkKIv at 150mA is sufficient to generate +-12V rails
 
 <pre>            
             Op-AMP circuit:
@@ -102,5 +97,3 @@ https://www.ebay.com/itm/323540774103?hash=item4b54886cd7:g:vd4AAOSwIr9bkKIv at 
                                 GND---->|0.1uF|---|0.1uF|->OP_AMP_pin_8(+12V)__________________________________________________|
 
 </pre>
-
-
