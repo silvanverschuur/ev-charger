@@ -1,0 +1,44 @@
+// Pilot pin (for 1kHz pwm generation)
+#define PILOT_GPIO 32
+
+#define PWM_CHANNEL       0
+#define PWM_RESOLUTION    10     // 10 bits = 1024 levels = 0,05859375A per step
+#define PWM_FREQUENCY     980    // 980 - 1020 range, 1000 nominal
+
+#define RELAY_PIN 33      // Charging relay on/off
+#define PILOT_PIN 34      // pilot pin is connected to GPIO 34 (Analog ADC1_CH6)
+
+#define NAME              "ev-charger"
+
+// Wifi SSID/password
+#define WIFI_SSID         "MyWiFi"
+#define WIFI_PASSWORD     "MyWiFiPassword"
+
+// Hostname/password for over-the-air updates
+#define OTA_HOSTNAME      NAME
+#define OTA_PASSWORD      "MyOTAPassword"
+
+// Min/max/default current
+#define MIN_CURRENT       6
+#define MAX_CURRENT       20
+#define DEFAULT_CURRENT   10
+
+// MQTT server
+#define MQTT_SERVER                   "192.168.1.2" 
+#define MQTT_CLIENT_ID                NAME
+#define MQTT_USER                     "ev-charger" 
+#define MQTT_PASSWORD                 "password"
+#define MQTT_RECONNECT_DELAY          5000
+#define MQTT_DEFAULT_PUBLISH_INTERVAL 10000
+
+// MQTT output topics
+#define MQTT_TOPIC_ONLINE             "ev-charger/online"
+#define MQTT_TOPIC_STATE              "ev-charger/state"
+#define MQTT_TOPIC_CP_VOLTAGE         "ev-charger/cp-voltage"
+#define MQTT_TOPIC_PWM                "ev-charger/pwm"
+#define MQTT_TOPIC_CURRENT            "ev-charger/current"
+#define MQTT_TOPIC_SETPOINT           "ev-charger/setpoint"
+
+// MQTT input topics
+#define MQTT_TOPIC_SET_ON             "ev-charger/set/on"
+#define MQTT_TOPIC_SET_SETPOINT       "ev-charger/set/setpoint"
